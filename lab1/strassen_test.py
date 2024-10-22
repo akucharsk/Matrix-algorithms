@@ -1,13 +1,13 @@
 import unittest
 
 import numpy as np
-from binet import binet
+from strassen import Strassen
 from util import random_matrix, Number
 
 
 def test(ref, k):
-    A, B = random_matrix(k, 0, 10, np.random.randint), random_matrix(k, 0, 10, np.random.randint)
-    ref.assertTrue(np.all(A @ B == binet(A, B)))
+    A, B = random_matrix(k, 1, 5, np.random.randint), random_matrix(k, 1, 5, np.random.randint)
+    ref.assertTrue(np.all(A @ B == Strassen(A, B)))
 
 
 class MyTestCase(unittest.TestCase):
@@ -22,7 +22,7 @@ class MyTestCase(unittest.TestCase):
         test(self, 3)
 
     def test_5x5(self):
-        test(self, 5)
+        test(self, 4)
 
     def test_10x10(self):
         test(self, 10)
