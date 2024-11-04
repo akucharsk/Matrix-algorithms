@@ -28,5 +28,6 @@ class MyTestCase(unittest.TestCase):
     def test_64x5X5x5(self):
         test(self, 64)
 
+
 if __name__ == '__main__':
     unittest.main()

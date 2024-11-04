@@ -1,4 +1,5 @@
 import numpy as np
+from binet import binet
 
 
 class Number(float):
@@ -42,18 +43,41 @@ class Number(float):
         Number.div_count += 1
         return Number(super().__rtruediv__(other))
 
+
+class Pipe:
+    def __init__(self, value):
+        self.value = value
+
+    def chain(self, func, assoc_rvalue=True):
+        if assoc_rvalue:
+            self.value = func(self.value)
+        else:
+            func(self.value)
+        return self
+
+    def unwrap(self):
+        return self.value
+
+
 def random_matrix(k: int, low=1E-8, high=1, function=np.random.uniform) -> np.ndarray:
     return np.array([[Number(j) for j in i] for i in function(low, high, size=(k, k))], dtype=Number)
 
 
+type partitioned_matrix = tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]
 
-def random_matrices_for_ai(n: int, m: int, low=1E-8, high=1, function=np.random.uniform) -> tuple[np.ndarray, np.ndarray]:
-    #n = m = k
-    # pow_of_4 = [4 ** i for i in range(1, 10)]
-    # pow_of_5 = [5 ** i for i in range(1, 10)]
 
-    A = np.array([[Number(j) for j in i] for i in np.random.uniform(low=10**(-8), high=1, size = (n, m))], dtype=Number)
-    # B = np.array([[Number(val) for val in row] for row in B])
-    B = np.array([[Number(j) for j in i] for i in np.random.uniform(low=10**(-8), high=1, size = (m, m))], dtype=Number)
+def matrix_partitions(matrix: np.ndarray) -> partitioned_matrix:
+    rows, cols = matrix.shape
+    rows //= 2
+    cols //= 2
 
-    return A, B
+    NW = matrix[:rows, :cols]
+    NE = matrix[:rows, cols:]
+    SW = matrix[rows:, :cols]
+    SE = matrix[rows:, cols:]
+
+    return NW, NE, SW, SE
+
+
+def number_eye(n: int) -> np.ndarray:
+    return np.array([[Number(1 if i == j else 0) for j in range(n)] for i in range(n)], dtype=Number)
