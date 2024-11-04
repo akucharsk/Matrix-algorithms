@@ -25,14 +25,14 @@ def lu_factorization(matrix: np.ndarray, mult) -> tuple[np.ndarray, np.ndarray]:
     U_22 = U_S
 
     L = np.concatenate(
-        (np.concatenate((L_11, np.zeros_like(L_11)), axis=1),
+        (np.concatenate((L_11, np.zeros((L_11.shape[0], L_22.shape[1]))), axis=1),
          np.concatenate((L_21, L_22), axis=1)),
         axis=0
     )
 
     U = np.concatenate(
         (np.concatenate((U_11, U_12), axis=1),
-         np.concatenate((np.zeros_like(U_11), U_22), axis=1)),
+         np.concatenate((np.zeros((U_22.shape[0], U_11.shape[1])), U_22), axis=1)),
         axis=0
     )
 
@@ -40,7 +40,7 @@ def lu_factorization(matrix: np.ndarray, mult) -> tuple[np.ndarray, np.ndarray]:
 
 
 if __name__ == '__main__':
-    n = 4
+    n = 5
     A = random_matrix(n, 1, 20)
     L, U = lu_factorization(A, binet)
 

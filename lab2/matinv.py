@@ -34,7 +34,7 @@ def invert_matrix(matrix: np.ndarray, mult) -> np.ndarray:
 
 
 if __name__ == '__main__':
-    n = 4
+    n = 10
     a1 = random_matrix(n, 1, 10, np.random.randint)
     a2 = random_matrix(n, 1, 10, np.random.randint)
 
