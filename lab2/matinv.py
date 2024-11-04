@@ -1,5 +1,4 @@
 import numpy as np
-import scipy
 from sys import setrecursionlimit
 
 setrecursionlimit(1000000)
