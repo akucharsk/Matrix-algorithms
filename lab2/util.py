@@ -43,6 +43,13 @@ class Number(float):
         Number.div_count += 1
         return Number(super().__rtruediv__(other))
 
+    @classmethod
+    def purge(cls):
+        cls.add_count = 0
+        cls.sub_count = 0
+        cls.mul_count = 0
+        cls.div_count = 0
+
 
 class Pipe:
     def __init__(self, value):
