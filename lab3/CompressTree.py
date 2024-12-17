@@ -21,17 +21,17 @@ class CompressTree:
         self.childs = [[None, None], [None, None]]
 
     def make_leaf(self, U, Sigma, V):
-            self.leaf = True
-            self.u = U
-            self.s = Sigma
-            self.v = V
+        self.leaf = True
+        self.u = U
+        self.s = Sigma
+        self.v = V
 
     def create_tree(self, r, epsylon):
         
         U, Sigma, V = randomized_svd(self.matrix[self.row_min:self.row_max, self.col_min: self.col_max], n_components=r)
         if self.row_max == self.row_min + r:
             self.make_leaf(U, Sigma, V)
-        elif Sigma[r-1] <= epsylon:
+        elif Sigma[r - 1] <= epsylon:
             self.make_leaf(U, Sigma, V)
         else:
             rows = [self.row_min, (self.row_min + self.row_max)//2, self.row_max]
@@ -40,6 +40,7 @@ class CompressTree:
                 for j in range(2):
                     self.childs[i][j] = CompressTree(self.matrix, rows[i], rows[i+1], cols[j], cols[j+1])
                     self.childs[i][j].create_tree(r, epsylon)
+
     def decompress(self, dest_matrix):
         if self.leaf:
             r = len(self.s)

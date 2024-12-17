@@ -2,8 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from collections import deque
 
+import CompressTree
 
-def draw_tree(root, title=''):
+
+def draw_tree(root, axis=plt, title=''):
     image = np.ones(root.matrix.shape)*255
 
     Q = deque()
@@ -23,9 +25,6 @@ def draw_tree(root, title=''):
             for i in range(2):
                 for j in range(2):
                     Q.append(v.childs[i][j])
-    
 
+    axis.imshow(image,cmap = "gray", vmin=0, vmax=255)
 
-    plt.imshow(image,cmap = "gray", vmin=0, vmax=255)
-    plt.title(title)
-    plt.show()
