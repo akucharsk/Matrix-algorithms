@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+        \PYG{k}{def} \PYG{n+nf}{create\PYGZus{}tree}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{r}\PYG{p}{,} \PYG{n}{epsylon}\PYG{p}{):}
+            \PYG{n}{U}\PYG{p}{,} \PYG{n}{Sigma}\PYG{p}{,} \PYG{n}{V} \PYG{o}{=} \PYG{n}{randomized\PYGZus{}svd}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{matrix}\PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{row\PYGZus{}min}\PYG{p}{:}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{row\PYGZus{}max}\PYG{p}{,} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{col\PYGZus{}min}\PYG{p}{:} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{col\PYGZus{}max}\PYG{p}{],} \PYG{n}{n\PYGZus{}components}\PYG{o}{=}\PYG{n}{r}\PYG{p}{)}
+            \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{row\PYGZus{}max} \PYG{o}{==} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{row\PYGZus{}min} \PYG{o}{+} \PYG{n}{r}\PYG{p}{:}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{make\PYGZus{}leaf}\PYG{p}{(}\PYG{n}{U}\PYG{p}{,} \PYG{n}{Sigma}\PYG{p}{,} \PYG{n}{V}\PYG{p}{)}
+            \PYG{k}{elif} \PYG{n}{Sigma}\PYG{p}{[}\PYG{n}{r} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{\PYGZlt{}=} \PYG{n}{epsylon}\PYG{p}{:}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{make\PYGZus{}leaf}\PYG{p}{(}\PYG{n}{U}\PYG{p}{,} \PYG{n}{Sigma}\PYG{p}{,} \PYG{n}{V}\PYG{p}{)}
+            \PYG{k}{else}\PYG{p}{:}
+                \PYG{n}{rows} \PYG{o}{=} \PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{row\PYGZus{}min}\PYG{p}{,} \PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{row\PYGZus{}min} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{row\PYGZus{}max}\PYG{p}{)}\PYG{o}{//}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{row\PYGZus{}max}\PYG{p}{]}
+                \PYG{n}{cols} \PYG{o}{=} \PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{col\PYGZus{}min}\PYG{p}{,} \PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{col\PYGZus{}min} \PYG{o}{+} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{col\PYGZus{}max}\PYG{p}{)}\PYG{o}{//}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{col\PYGZus{}max}\PYG{p}{]}
+                \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{):}
+                    \PYG{k}{for} \PYG{n}{j} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{):}
+                        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{childs}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]} \PYG{o}{=} \PYG{n}{CompressTree}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{matrix}\PYG{p}{,} \PYG{n}{rows}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{rows}\PYG{p}{[}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{],} \PYG{n}{cols}\PYG{p}{[}\PYG{n}{j}\PYG{p}{],} \PYG{n}{cols}\PYG{p}{[}\PYG{n}{j}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{])}
+                        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{childs}\PYG{p}{[}\PYG{n}{i}\PYG{p}{][}\PYG{n}{j}\PYG{p}{]}\PYG{o}{.}\PYG{n}{create\PYGZus{}tree}\PYG{p}{(}\PYG{n}{r}\PYG{p}{,} \PYG{n}{epsylon}\PYG{p}{)}
+\end{Verbatim}

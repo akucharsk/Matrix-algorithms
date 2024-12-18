@@ -1,2 +1,9 @@
 lab*/*.zip
 lab*/.ipynb_checkpoints/
+lab*/*.aux
+lab*/*.fdb_latexmk
+lab*/*.fls
+lab*/*.log
+lab*/*.out
+lab*/*.tex
+lab3/images

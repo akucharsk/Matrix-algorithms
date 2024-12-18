@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+        \PYG{k}{class} \PYG{n+nc}{CompressTree}\PYG{p}{:}
+            \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,}\PYG{n}{matrix}\PYG{p}{,} \PYG{n}{row\PYGZus{}min}\PYG{p}{,} \PYG{n}{row\PYGZus{}max}\PYG{p}{,} \PYG{n}{col\PYGZus{}min}\PYG{p}{,} \PYG{n}{col\PYGZus{}max}\PYG{p}{):}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{matrix} \PYG{o}{=} \PYG{n}{matrix}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{row\PYGZus{}min} \PYG{o}{=} \PYG{n}{row\PYGZus{}min}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{row\PYGZus{}max} \PYG{o}{=} \PYG{n}{row\PYGZus{}max}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{col\PYGZus{}min} \PYG{o}{=} \PYG{n}{col\PYGZus{}min}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{col\PYGZus{}max} \PYG{o}{=} \PYG{n}{col\PYGZus{}max}
+
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{leaf} \PYG{o}{=} \PYG{k+kc}{False}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{childs} \PYG{o}{=} \PYG{p}{[[}\PYG{k+kc}{None}\PYG{p}{,} \PYG{k+kc}{None}\PYG{p}{],} \PYG{p}{[}\PYG{k+kc}{None}\PYG{p}{,} \PYG{k+kc}{None}\PYG{p}{]]}
+
+            \PYG{k}{def} \PYG{n+nf}{make\PYGZus{}leaf}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{U}\PYG{p}{,} \PYG{n}{Sigma}\PYG{p}{,} \PYG{n}{V}\PYG{p}{):}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{leaf} \PYG{o}{=} \PYG{k+kc}{True}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{u} \PYG{o}{=} \PYG{n}{U}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{s} \PYG{o}{=} \PYG{n}{Sigma}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{v} \PYG{o}{=} \PYG{n}{V}
+\end{Verbatim}
