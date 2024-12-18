@@ -6,4 +6,5 @@ lab*/*.fls
 lab*/*.log
 lab*/*.out
 lab*/*.tex
+lab*/*.gz
 lab3/images
